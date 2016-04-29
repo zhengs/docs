@@ -32,6 +32,22 @@ var DeviceAnimation = function(element, deviceType) {
         y: 38.5,
         radius: 30
       }
+    },
+    "AssetTrackerShield": {
+      image: "/assets/images/asset-tracker.svg",
+      zoom: 2,
+      width: 6666,
+      height: 6666,
+      led: {
+        x: 66,
+        y: 66.5,
+        radius: 30
+      },
+      fixLed: {
+        x: 10,
+        y: 10,
+        radius: 30
+      }
     }
   };
 
@@ -255,11 +271,48 @@ var DeviceAnimation = function(element, deviceType) {
     performPatternPhrase(0);
   }
 
+
+  function assetTrackerPattern() {
+    // create the other LED
+
+    var fixLed = group.circle(device.fixLed.radius).center(device.fixLed.x, device.fixLed.y);
+
+    // update these lines for fixLed
+    var light_s1, light_s2;
+    var light = group.gradient('radial', function(stop) {
+      light_s1 = stop.at(0, "#000", 0);
+      light_s2 = stop.at(0.3, "#000", 0);
+      stop.at(1, "#000", 0);
+    });
+    light.radius(0.6);
+    led.fill(light);
+
+    // Change the color of the LED gradient
+    function colorFixLed(color, opacity) {
+      if(!showLight) {
+        return;
+      }
+      light_s1.update(0, color, opacity);
+      light_s2.update(0.3, color, opacity);
+    }
+
+    // call a function to blink the other LED
+    colorFixLed(color, 1);
+    afterDelay(onDuration, function() {
+    colorFixLed(color, 0);
+    afterDelay(offDuration, next);
+    });
+
+    // Make the RGB led breathe cyan
+    breathe("cyan");
+  }
+
   return {
     breathe: breathe,
     blink: blink,
     sos: sos,
-    pattern: pattern
+    pattern: pattern,
+    assetTrackerPattern: assetTrackerPattern
   };
 };
 

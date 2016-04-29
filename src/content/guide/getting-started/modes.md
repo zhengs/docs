@@ -48,6 +48,8 @@ Here's the typical pattern of a {{device}} after power up.
 
 When it is breathing cyan, your {{device}} is happily connected to the Internet. When it is in this mode, you can call functions and flash code.
 
+{{{device-animation "AssetTrackerShield" "assetTrackerPattern"}}}
+
 
 ### OTA Firmware Update
 
