@@ -209,12 +209,14 @@ h1 .header-permalinks {
     }
   }
 }
-.content-root {
-  position: absolute;
-  top: 53px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+@media screen {
+  .content-root {
+    position: absolute;
+    top: 53px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 .content, .content-body {
   padding-top: 20px;
@@ -224,15 +226,17 @@ h1 .header-permalinks {
   zoom: 1;
   max-width: 700px;
 }
-.content-inner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-transform: translate3d(0,0,0);
+@media screen {
+  .content-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-transform: translate3d(0,0,0);
+  }
 }
 .content:before,
 .content:after {
